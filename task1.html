@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunil - Personal Portfolio</title>
+    <style>
+        /* --- Global Styles --- */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+
+        h1, h2 {
+            color: #0056b3; /* A nice blue color */
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            background: #0056b3;
+            color: #ffffff;
+            padding-top: 20px;
+            min-height: 70px;
+            border-bottom: #004080 3px solid;
+        }
+
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+
+        header ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            float: right;
+        }
+
+        header li {
+            display: inline;
+            padding: 0 20px;
+        }
+
+        header #logo {
+            float: left;
+            font-size: 24px;
+            margin: 0;
+        }
+
+        header nav {
+            margin-top: 5px;
+        }
+        
+        header a:hover {
+            color: #f4f4f4;
+            font-weight: bold;
+        }
+
+        /* --- Sections --- */
+        section {
+            padding: 40px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #about {
+            background: #ffffff;
+            text-align: center;
+        }
+
+        #about img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%; /* Makes the image round */
+            border: 3px solid #0056b3;
+            margin-bottom: 20px;
+        }
+
+        #education ul, #skills ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #education li, #skills li {
+            background: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-left: 5px solid #0056b3;
+        }
+
+        /* --- Projects Section --- */
+        #projects {
+            background: #ffffff;
+        }
+
+        .projects-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .project-card {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 30%;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+            box-sizing: border-box; /* Ensures padding doesn't affect width */
+        }
+
+        .project-card h3 {
+            color: #333;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 5px;
+        }
+        
+        /* Adjust for smaller screens */
+        @media(max-width: 768px) {
+            .project-card {
+                width: 100%;
+            }
+            header #logo, header ul {
+                float: none;
+                text-align: center;
+                width: 100%;
+            }
+            header li {
+                padding: 10px;
+            }
+        }
+
+
+        /* --- Contact Form --- */
+        #contact form {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        #contact label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        #contact input[type="text"],
+        #contact input[type="email"],
+        #contact textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Important for padding to work well */
+        }
+
+        #contact button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #contact button:hover {
+            background-color: #004080;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #0056b3;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1 id="logo">Sunil</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <img src="profile pic sunil.jpg" alt="Sunil's Picture">
+            <h1>Hi, I'm Sunil</h1>
+            <p>I am a passionate developer with a strong interest in building web applications and exploring new technologies. I am currently focusing on cloud computing and AI. Welcome to my personal portfolio!</p>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h2>Education</h2>
+            <ul>
+                <li>
+                    <strong>B.Tech in Computer Science</strong> - Osmania University (CGPA: 8.2)
+                </li>
+                <li>
+                    <strong>HSC</strong> - [Your HSC Institute Name]
+                </li>
+                <li>
+                    <strong>SSC</strong> - [Your SSC Institute Name]
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2>Skills</h2>
+            <ul>
+                <li><strong>Programming Languages:</strong> Python, C++, JavaScript</li>
+                <li><strong>Web Technologies:</strong> HTML, CSS, Flask, Node.js</li>
+                <li><strong>Cloud & AI:</strong> Oracle Cloud Infrastructure (OCI), Basic Machine Learning</li>
+                <li><strong>Databases:</strong> SQL, MongoDB</li>
+                <li><strong>Tools:</strong> Git, Docker</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="projects-container">
+                
+                <div class="project-card">
+                    <h3>Project Samarth</h3>
+                    <p>An intelligent Q&A system designed to query government agricultural and climate data. Built using Python and AI principles.</p>
+                </div>
+                
+                <div class="project-card">
+                    <h3>Shield of a Trader</h3>
+                    <p>A paper trading platform that allows users to simulate stock trades without real money. Features user authentication and trade tracking.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Smart Farming App</h3>
+                    <p>A web application aimed at modernizing farming practices. Includes features for user/admin logins and resource management.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <p>Feel free to reach out!</p>
+            <form id="contact-form">
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div>
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Sunil. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Select the form
+        const contactForm = document.getElementById('contact-form');
+
+        // Add an event listener for the 'submit' event
+        contactForm.addEventListener('submit', function(event) {
+            // Prevent the form from actually submitting (which would refresh the page)
+            event.preventDefault();
+            
+            // Show a simple alert
+            alert('Thank you for your message! This form is a demo.');
+
+            // Optional: Clear the form fields
+            contactForm.reset();
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyncTask - Simplify Your Workflow</title>
+    
+    <style>
+        /* --- 1. Global & Root Variables --- */
+        :root {
+            --primary-color: #4A90E2; /* A strong, friendly blue */
+            --dark-color: #333333;
+            --light-color: #ffffff;
+            --grey-bg: #f9f9f9;
+            --text-color: #555555;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 {
+            line-height: 1.2;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+
+        h2 {
+            font-size: 2.5rem; /* 40px */
+            text-align: center;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--light-color);
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: #357ABD; /* A darker shade of blue */
+            transform: translateY(-2px);
+        }
+
+        /* --- 2. Header & Navigation (Using Flexbox) --- */
+        header {
+            background: var(--light-color);
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between; /* Pushes logo and nav apart */
+            align-items: center; /* Vertically centers them */
+        }
+
+        .logo {
+            font-size: 1.8rem; /* 28px */
+            color: var(--primary-color);
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex; /* Aligns nav items in a row */
+        }
+
+        .main-nav li {
+            margin-left: 25px;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            font-size: 1rem;
+        }
+        
+        .main-nav a.nav-cta {
+            padding: 8px 15px; /* Smaller button for nav */
+            font-size: 0.9rem;
+        }
+
+        /* Hamburger Menu (for mobile) */
+        .hamburger-menu {
+            display: none; /* Hidden on desktop */
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .hamburger-menu span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--dark-color);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* --- 3. Hero Section --- */
+        /* (Not explicitly asked for, but essential for a landing page) */
+        #hero {
+            background: var(--grey-bg);
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        #hero h1 {
+            font-size: 3.5rem; /* 56px */
+            color: var(--dark-color);
+        }
+
+        #hero p {
+            font-size: 1.25rem; /* 20px */
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- 4. Feature Highlights (Using CSS Grid) --- */
+        #features {
+            background: var(--light-color);
+        }
+
+        .features-grid {
+            display: grid;
+            /* This is the responsive part: */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            text-align: left;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: var(--light-color);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .feature-card h3 {
+            color: var(--primary-color);
+            font-size: 1.4rem; /* 22px */
+        }
+        
+        .feature-card p {
+            font-size: 0.95rem;
+        }
+
+        /* --- 5. Testimonials (Using Flexbox) --- */
+        #testimonials {
+            background: var(--grey-bg);
+        }
+        
+        .testimonials-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap; /* This makes it responsive */
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .testimonial-card {
+            background: var(--light-color);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            flex-basis: 45%; /* Each card takes up 45% of the container */
+            min-width: 300px; /* On small screens, they'll wrap and be 100% wide */
+            text-align: left;
+            position: relative;
+        }
+
+        .testimonial-card p.quote {
+            font-style: italic;
+            font-size: 1.1rem; /* 18px */
+            margin-bottom: 15px;
+            color: #444;
+        }
+        
+        .testimonial-card p.author {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        /* Simple quote symbol */
+        .testimonial-card::before {
+            content: '“';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 3rem;
+            color: var(--primary-color);
+            opacity: 0.2;
+        }
+
+        /* --- 6. Footer --- */
+        footer {
+            background: var(--dark-color);
+            color: var(--light-color);
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        footer p {
+            margin: 0;
+            color: #aaa;
+        }
+
+        /* --- 7. Responsive Media Query --- */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 2rem; /* 32px */
+            }
+
+            .logo {
+                font-size: 1.5rem; /* 24px */
+            }
+
+            .hamburger-menu {
+                display: block; /* Show hamburger on mobile */
+            }
+
+            .main-nav {
+                display: none; /* Hide nav by default on mobile */
+                position: absolute;
+                top: 71px; /* Sits just below the header (header padding 20+20 + 1px border) */
+                left: 0;
+                width: 100%;
+                background: var(--light-color);
+                border-bottom: 1px solid #eee;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+
+            .main-nav.active {
+                display: block; /* Show nav when hamburger is clicked */
+            }
+
+            .main-nav ul {
+                flex-direction: column; /* Stack nav items vertically */
+            }
+
+            .main-nav li {
+                margin: 0;
+                text-align: center;
+            }
+
+            .main-nav a {
+                display: block;
+                padding: 15px;
+                border-bottom: 1px solid #f4f4f4;
+            }
+            
+            .main-nav a.nav-cta {
+                margin: 10px 15px;
+                padding: 12px;
+            }
+
+            /* Hamburger 'X' animation when active */
+            .hamburger-menu.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            .hamburger-menu.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger-menu.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+
+            #hero h1 {
+                font-size: 2.5rem; /* 40px */
+            }
+            #hero p {
+                font-size: 1.1rem; /* 18px */
+            }
+
+            /* Flexbox/Grid layouts already handle wrapping, but we can be explicit */
+            .testimonials-container {
+                flex-direction: column;
+            }
+            .testimonial-card {
+                flex-basis: 100%; /* Make them full width on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1 class="logo">SyncTask</h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#" class="cta-button nav-cta">Sign Up</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container">
+                <h1>Simplify Your Workflow</h1>
+                <p>The all-in-one project management tool that your team will actually love to use.</p>
+                <a href="#" class="cta-button">Get Started for Free</a>
+            </div>
+        </section>
+
+        <section id="features">
+            <div class="container">
+                <h2>Everything You Need, Nothing You Don't</h2>
+                <div class="features-grid">
+                    
+                    <div class="feature-card">
+                        <h3>Real-Time Collaboration</h3>
+                        <p>Work with your team on tasks and documents simultaneously. No more version conflicts or endless email chains.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3>Intuitive Kanban Boards</h3>
+                        <p>Visualize your progress with easy-to-use drag-and-drop Kanban boards. See who's doing what at a glance.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3>Powerful Analytics</h3>
+                        <p>Get insights into your team's productivity and project timelines with our built-in, easy-to-understand reports.</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <div class="container">
+                <h2>What Our Users Say</h2>
+                <div class="testimonials-container">
+                    
+                    <div class="testimonial-card">
+                        <p class="quote">"SyncTask has revolutionized how our team works. We're 50% more productive and communication has never been better!"</p>
+                        <p class="author">- Jane D., Project Manager</p>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p class="quote">"Finally, a project management tool that isn't bloated. It has exactly what we need and nothing we don't. We were set up in minutes."</p>
+                        <p class="author">- Mark S., Startup CEO</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 SyncTask. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger-menu');
+        const nav = document.querySelector('.main-nav');
+
+        hamburger.addEventListener('click', () => {
+            // Toggle 'active' class on both hamburger and nav
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+    </script>
+
+</body>
+</html>
